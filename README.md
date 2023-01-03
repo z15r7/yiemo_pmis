@@ -3,7 +3,7 @@ Group 4, Production and Marketing Information System (Fall, 2022) Final Project,
 
 Team Member:
 
-桂玲心, 107306091, Senior, Department of Management Information Systems.
+桂玲心, 107306091, Senior, Department of Management Information Systems. (@KueiLingHsin)
 
 石宗霖, 108306033, Senior, Department of Management Information Systems. (@z15r7)
 
