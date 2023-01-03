@@ -12,3 +12,13 @@ Team Member:
 林柔妏, 109306003, Junior, Department of Management Information Systems.
 
 溫薇妮, 109306034, Junior, Department of Management Information Systems.
+
+For frontend developer of this project: (recommanded to run it with VS Code)
+
+1. Clone the repo.
+
+2. Input `cd frontend` in terminal with Command Prompt (cmd.exe).
+
+3. Then, `pnpm i`. (If `pnpm` has not yet been installed, try `npm install -g pnpm` first; if `npm`  has not yet been installed as well, just go to the official website to download the setup file.)
+
+4. `pnpm dev` after the above steps was done.
