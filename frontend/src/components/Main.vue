@@ -6,15 +6,17 @@
             :menuItem="menuItem"
             @handleSelected="handleSelected"
         />
-        <div class="border border-slate-50 shadow bg-white p-2 rounded-md h-48">
-            {{ selected }}
-            {{ menuItem[selected].name }}
-        </div>
+        <Body
+            :selected="selected"
+            :menuItem="menuItem"
+            :products="products"
+        />
     </div>
 </template>
 
 <script>
 import Header from '/src/components/Header.vue';
+import Body from '/src/components/Body.vue';
 
 export default {
     data: () => ({
@@ -22,13 +24,17 @@ export default {
         section: "",
         selected: 0,
         menuItem: [
-            {name: "商品", link: "product"},
-            {name: "存貨", link: "stock"},
+            {name: "銷貨", link: "product"},
+            {name: "進貨", link: "stock"},
             {name: "設定", link: "setting"}
         ],
         products: [
             {name: "商品1", price: 100, stock: 10},
             {name: "商品2", price: 200, stock: 20},
+            {name: "商品3", price: 300, stock: 30},
+            {name: "商品1", price: 100, stock: 10},
+            {name: "商品2", price: 200, stock: 20},
+            {name: "商品3", price: 300, stock: 30},
             {name: "商品3", price: 300, stock: 30},
         ],
     }),
@@ -41,6 +47,7 @@ export default {
     },
     components: {
         Header,
+        Body
     },
 }
 </script>
