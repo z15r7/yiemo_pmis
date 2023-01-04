@@ -7,7 +7,7 @@
         <div></div>
     </div>
     <div class="flex flex-grow-0">
-        <div
+        <button
             class="flex justify-center flex-grow-0 w-full border border-slate-300 p-2"
             :class="[
                 {'bg-blue-500 text-white': idx === selected},
@@ -18,8 +18,8 @@
             @click="handleSelected(idx)"
             v-for="i, idx in menuItem"
         >
-            <button class="w-full -m-2 p-2">{{ i.name }}</button>
-        </div>
+            <p>{{ i.name }}</p>
+        </button>
     </div>
 </template>
 
