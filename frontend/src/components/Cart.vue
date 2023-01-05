@@ -5,7 +5,7 @@
                 class="border border-slate-50 shadow shadow-slate-300 bg-white py-2 px-4 rounded-md"
                 v-for="i in cart"
             >
-                {{`${i.name}-${i.price}`}}
+                {{`${i.id}-${i.name} $${i.price}`}}
             </div>
         </div>
         <div class="fixed w-full bottom-0 left-0">
@@ -32,10 +32,10 @@ export default {
     data: () => ({
     }),
     props: ['cart'],
-    emits: ['addCart', 'clearCart'],
+    emits: ['submitCart', 'clearCart'],
     methods: {
         handleSubmit: function () {
-            this.$emit('addCart', item);
+            this.$emit('submitCart');
         },
         handleCancel: function () {
             this.$emit('clearCart');

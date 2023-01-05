@@ -46,7 +46,8 @@ import BodyItem from '/src/components/BodyItem.vue';
 const defaultForm = {
     name: '新產品',
     price: 0,
-    materials: []
+    materials: [],
+    sales: 0,
 }
 
 export default {
@@ -72,7 +73,15 @@ export default {
             this.showAddProductModal = false;
         },
         putMaterial: function () {
-            document.getElementById('materials').value && this.modalForm.materials.push(document.getElementById('materials').value);
+            if (document.getElementById('materials').value) {
+                if (this.modalForm.materials.find(i => i.id === document.getElementById('materials').value)) {
+                    return;
+                }
+                this.modalForm.materials.push({
+                    id: document.getElementById('materials').value,
+                    estUsage: 1
+                });
+            }
         }
     },
     computed: {

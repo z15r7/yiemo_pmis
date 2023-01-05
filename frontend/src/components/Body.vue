@@ -5,6 +5,7 @@
             :products="products"
             :cart="cart"
             @addCart="addCart"
+            @submitCart="submitCart"
             @clearCart="clearCart"
         />
         <Purchases
@@ -61,11 +62,14 @@ export default {
         addCart: function (item) {
             this.$emit('addCart', item);
         },
-        addStock: function (item) {
-            this.$emit('addStock', item);
+        submitCart: function () {
+            this.$emit('submitCart');
         },
         clearCart: function () {
             this.$emit('clearCart');
+        },
+        addStock: function (item) {
+            this.$emit('addStock', item);
         },
         submitStock: function () {
             this.$emit('submitStock');

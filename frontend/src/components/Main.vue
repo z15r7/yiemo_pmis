@@ -15,6 +15,7 @@
             @addMaterial="addMaterial"
             :cart="cart"
             @addCart="addCart"
+            @submitCart="submitCart"
             @clearCart="clearCart"
             :stock="stock"
             @addStock="addStock"
@@ -79,6 +80,17 @@ export default {
                 });
             });
             this.clearStock();
+        },
+        updateStock: function () {
+        },
+        submitCart: function () {
+            this.cart.forEach((product) => {
+                this.products.find((item) => {
+                    if (item.id === product.id)
+                        item.sales += 1;
+                });
+            });
+            this.clearCart();
         },
     },
     computed: {

@@ -6,6 +6,7 @@
         v-if="cart.length > 0"
         :cart="cart"
         @addCart="addCart"
+        @submitCart="submitCart"
         @clearCart="clearCart"
     />
 </template>
@@ -21,6 +22,9 @@ export default {
     methods: {
         addCart: function (item) {
             this.$emit('addCart', item);
+        },
+        submitCart: function () {
+            this.$emit('submitCart');
         },
         clearCart: function () {
             this.$emit('clearCart');
