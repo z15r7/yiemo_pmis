@@ -3,9 +3,10 @@
         <div class="grid grid-cols-1 gap-4 p-4">
             <div
                 class="border border-slate-50 shadow shadow-slate-300 bg-white py-2 px-4 rounded-md"
-                v-for="i in cart"
+                v-for="i in stock"
             >
-                {{`${i.name}-${i.price}`}}
+                {{`${i.id}-${i.name}`}}
+                {{`${i.type}`}}
             </div>
         </div>
         <div class="fixed w-full bottom-0 left-0">
@@ -31,14 +32,14 @@
 export default {
     data: () => ({
     }),
-    props: ['cart'],
-    emits: ['addCart', 'clearCart'],
+    props: ['stock'],
+    emits: ['submitStock', 'clearStock'],
     methods: {
         handleSubmit: function () {
-            this.$emit('addCart', item);
+            this.$emit('submitStock');
         },
         handleCancel: function () {
-            this.$emit('clearCart');
+            this.$emit('clearStock');
         }
     },
     computed: {

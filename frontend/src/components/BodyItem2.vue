@@ -1,7 +1,6 @@
 <template>
     <div
         class="border border-slate-50 shadow shadow-slate-300 bg-white p-4 rounded-md cursor-pointer"
-        @click="handleAdd"
     >
         <p>{{ item.id }}</p>
         <p>{{ item.name }}</p>
@@ -18,14 +17,8 @@
         }),
         props: ['item'],
         methods: {
-            handleSelected: function (idx) {
-                this.$emit('handleSelected', idx);
-            },
             handlePrice: function (value) {
                 return `$${JSON.stringify(value)}`;
-            },
-            handleAdd: function () {
-                this.$emit('add', this.item);
             }
         },
         computed: {

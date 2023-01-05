@@ -1,5 +1,5 @@
 <template>
-    <div class="w-full max-w-4xl place-item-center p-8 flex-row flex-grow-0 bg-slate-200 h-screen space-y-4">
+    <div class="w-full max-w-4xl place-item-center p-8 flex-row flex-grow-0 bg-slate-200 space-y-4 min-h-screen">
         <Header
             :title="title"
             :selected="selected"
@@ -10,13 +10,16 @@
             :selected="selected"
             :menuItem="menuItem"
             :products="products"
-            @add="add"
-        />
-        <Cart
-            v-if="cart.length > 0"
+            @addProduct="addProduct"
+            :materials="materials"
+            @addMaterial="addMaterial"
             :cart="cart"
-            @handleSubmit="handleSubmit"
-            @handleCancel="handleCancel"
+            @addCart="addCart"
+            @clearCart="clearCart"
+            :stock="stock"
+            @addStock="addStock"
+            @submitStock="submitStock"
+            @clearStock="clearStock"
         />
     </div>
 </template>
@@ -24,7 +27,6 @@
 <script>
 import Header from '/src/components/Header.vue';
 import Body from '/src/components/Body.vue';
-import Cart from '/src/components/Cart.vue';
 
 export default {
     data: () => ({
@@ -32,61 +34,58 @@ export default {
         section: "",
         selected: 0,
         showCart: false,
+        showStock: false,
         menuItem: [
-            {name: "銷貨", link: "product"},
-            {name: "進貨", link: "stock"},
+            {name: "銷貨", link: "sale"},
+            {name: "進貨", link: "purchase"},
+            {name: "商品", link: "product"},
+            {name: "折扣", link: "discount"},
+            {name: "原料", link: "material"},
+            {name: "統計", link: "statistic"},
             {name: "設定", link: "setting"}
         ],
-        products: [
-            {name: "商品1", price: 100, stock: 10},
-            {name: "商品2", price: 200, stock: 20},
-            {name: "商品3", price: 300, stock: 30},
-            {name: "商品1", price: 100, stock: 10},
-            {name: "商品2", price: 200, stock: 20},
-            {name: "商品3", price: 300, stock: 30},
-            {name: "商品3", price: 300, stock: 30},
-            {name: "商品3", price: 300, stock: 30},
-            {name: "商品1", price: 100, stock: 10},
-            {name: "商品2", price: 200, stock: 20},
-            {name: "商品3", price: 300, stock: 30},
-            {name: "商品3", price: 300, stock: 30},
-            {name: "商品1", price: 100, stock: 10},
-            {name: "商品2", price: 200, stock: 20},
-            {name: "商品3", price: 300, stock: 30},
-            {name: "商品1", price: 100, stock: 10},
-            {name: "商品2", price: 200, stock: 20},
-            {name: "商品3", price: 300, stock: 30},
-            {name: "商品3", price: 300, stock: 30},
-            {name: "商品3", price: 300, stock: 30},
-            {name: "商品1", price: 100, stock: 10},
-            {name: "商品2", price: 200, stock: 20},
-            {name: "商品3", price: 300, stock: 30},
-            {name: "商品3", price: 300, stock: 30},
-        ],
-        cart: []
+        products: [],
+        materials: [],
+        cart: [],
+        stock: [],
     }),
     methods: {
         handleSelected: function (idx) {
             this.selected = idx;
         },
-        add: function (item) {
+        addProduct: function (item) {
+            this.products.push(item);
+        },
+        addMaterial: function (item) {
+            this.materials.push(item);
+        },
+        addCart: function (item) {
             this.cart.push(item);
         },
-        handleSubmit: function () {
-            console.log("submit");
+        addStock: function (item) {
+            this.stock.push(item);
+        },
+        clearCart: function () {
             this.cart = [];
-        }
-        ,handleCancel: function () {
-            console.log("cancel");
-            this.cart = [];
-        }
+        },
+        clearStock: function () {
+            this.stock = [];
+        },
+        submitStock: function () {
+            this.stock.forEach((material) => {
+                this.materials.find((item) => {
+                    if (item.id === material.id)
+                        item.stock += 1;
+                });
+            });
+            this.clearStock();
+        },
     },
     computed: {
     },
     components: {
         Header,
         Body,
-        Cart
     },
 }
 </script>

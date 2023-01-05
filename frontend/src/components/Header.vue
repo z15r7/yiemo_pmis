@@ -6,14 +6,14 @@
         </div>
         <div></div>
     </div>
-    <div class="flex flex-grow-0">
+    <div class="flex flex-col sm:flex-row">
         <button
-            class="flex justify-center flex-grow-0 w-full border border-slate-300 p-2"
+            class="w-full border border-slate-300 p-2"
             :class="[
                 {'bg-blue-500 text-white': idx === selected},
                 {'bg-white': idx !== selected},
-                {'rounded-l-xl': idx === 0},
-                {'rounded-r-xl': idx === menuItem.length - 1}
+                {'rounded-t-xl sm:rounded-r-none sm:rounded-l-xl': idx === 0},
+                {'rounded-b-xl sm:rounded-l-none sm:rounded-r-xl': idx === menuItem.length - 1}
             ]"
             @click="handleSelected(idx)"
             v-for="i, idx in menuItem"
