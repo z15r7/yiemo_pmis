@@ -15,6 +15,7 @@ app.listen(port, () => {
   console.log(`App listening at http://localhost:${port}`);
 });
 
-// app.get("/", (req, res) => {
-//   res.sendFile(path.join(__dirname + "/build/index.html"));
-// });
+app.get("/", (req, res) => {
+  const result = { data: [], success: false, error: "NULL PATH." };
+  res.send(result);
+});
